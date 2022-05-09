@@ -81,8 +81,9 @@ class Recipe extends LunchboxPrototype
         foreach ($this->ingredients as $ingredient) {
             $k = $this->countable;
             $k[] = 'name'; //давай сразу имя ингредиента получим тоже
+            $k[] = 'id';   //и id
             foreach ($k as $nutrient) {
-                $variables[($nutrient !== 'name') ? $nutrient.$this->nutPostfix : $nutrient] = $ingredient->{$nutrient};
+                $variables[($nutrient !== 'name' && $nutrient !== 'id') ? $nutrient.$this->nutPostfix : $nutrient] = $ingredient->{$nutrient};
             }
             $nutrients[$ingredient->id] = $variables;
         }

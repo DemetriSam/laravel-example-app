@@ -30,9 +30,11 @@ $dict = [
         <tr>
             @foreach ($table_order as $field)
                 <td>
+
                     @if (isset($quantityInput) && $field === 'quantity')
-                        <input class="w-12 field" type="text"
-                            value="{{ isset($component[$field]) ? $component[$field] : '' }}" />
+                        <input name="{{ isset($component['id']) ? $component['id'] : '' }}-component"
+                            class="w-12 field td-field {{ $field }}-field {{ isset($component['id']) ? $component['id'] : '' }}-component"
+                            type="text" value="{{ isset($component[$field]) ? $component[$field] : '' }}" />
                     @else
                         {{ isset($component[$field]) ? $component[$field] : '' }}
                     @endif
