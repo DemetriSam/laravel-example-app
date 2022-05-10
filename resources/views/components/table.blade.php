@@ -32,7 +32,7 @@ $dict = [
                 <td>
 
                     @if (isset($quantityInput) && $field === 'quantity')
-                        <input name="{{ isset($component['id']) ? $component['id'] : '' }}-component"
+                        <input name="quantity[{{ isset($component['id']) ? $component['id'] : '' }}]"
                             class="w-12 field td-field {{ $field }}-field {{ isset($component['id']) ? $component['id'] : '' }}-component"
                             type="text" value="{{ isset($component[$field]) ? $component[$field] : '' }}" />
                     @else

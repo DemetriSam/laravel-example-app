@@ -109,10 +109,18 @@ class RecipeController extends Controller
      */
     public function update(Request $request, Recipe $recipe)
     {
-        dd($request->post());
+        
+        $quantity = $request->post()['quantity'];
+        foreach($quantity as $ingredient_id => $q) {
+            $recipe = Recipe::find($request->recipe_id);
+            $recipe->ingredients()->updateExistingPivot($ingredient_id, [
+                'quantity' => $q
+            ]);
+        }
         return view('update-recipe-form', [
             'recipe' => $recipe->calculateTheRecipe(),
-            'recipe_id' => $recipe->id
+            'recipe_id' => $recipe->id,
+            'recipe_name' => $recipe->name
         ]);
     }
 
